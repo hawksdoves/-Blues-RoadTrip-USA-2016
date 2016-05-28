@@ -1,7 +1,8 @@
 
-roadtripApp.controller('roadtripController', ['$scope', 'MapService', function($scope, MapService){
+roadtripApp.controller('RoadTripController', ['MapService', function(MapService){
   var self = this;
 
   MapService.maps();
 
+  self.testing = "boo"
 }])
