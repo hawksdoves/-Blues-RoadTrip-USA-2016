@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="roadtripApp">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>USA Road Trip Summer 2016</title>
+
+  <!-- Scripts -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxY7pHJ_biZy5AQY9JxLQ3xvA_n6hnSqk"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="services/mapService.js"></script>
+    <script type="text/javascript" src="controllers/roadtripController.js"></script>
+
+  <!-- <script type="text/javascript" src="js/factories/slinkFactory.js"></script>
+  <script type="text/javascript" src="js/services/slinksService.js"></script> -->
+
+
+  <!-- Stylesheets & fonts  -->
+  <!-- <link href='https://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type='text/css' href="stylesheet/main.css"> -->
+</head>
+<body>
+  <div ng-controller="roadtripController as ctrl">
+    <h1>Hello</h1>
+    <div id="map" style="width:500px;height:380px;"></div>
+</div>
+</body>
+</html>
