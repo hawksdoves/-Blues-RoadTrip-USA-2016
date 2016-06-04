@@ -4,5 +4,4 @@ roadtripApp.controller('RoadTripController', ['MapService', function(MapService)
 
   MapService.maps();
 
-  self.testing = "boo"
 }])

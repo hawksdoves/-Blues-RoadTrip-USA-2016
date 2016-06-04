@@ -13,7 +13,4 @@ describe('RoadTripController', function() {
     expect(MapService.maps).toHaveBeenCalled;
   });
 
-  it('should work', function() {
-    expect(ctrl.testing).toEqual("boo");
-  });
 });
