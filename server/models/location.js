@@ -5,8 +5,8 @@ module.exports = function(sequelize, DataTypes) {
     desc: DataTypes.TEXT,
     lat: DataTypes.DECIMAL,
     long: DataTypes.DECIMAL,
-    startDate: DataTypes.DATEONLY,
-    endDate: DataTypes.DATEONLY
+    arrival: DataTypes.DATE,
+    departed: DataTypes.DATE
   }, {
     classMethods: {
       associate: function(models) {

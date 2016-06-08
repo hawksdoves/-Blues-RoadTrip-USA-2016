@@ -21,6 +21,10 @@
     res.sendFile(path.join(__dirname, 'public', 'roadtrip.html'));
   });
 
+  app.get('/current-location', function(req, res){
+    res.sendFile(path.join(__dirname, 'public', 'currentLocation.html'));
+  });
+
   app.get('/location', function(req, res){
     res.sendFile(path.join(__dirname, 'public', 'location.html'));
   });

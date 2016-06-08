@@ -53,6 +53,24 @@ roadtripApp.service('MapService', ['$http', function($http){
         createMarker(cities[i]);
     }
 
+    var flightPlanCoordinates = [
+                                  { lat: cities[0]['lat'],
+                                    lng: cities[0]['long']
+                                  },
+                                  { lat: cities[1]['lat'],
+                                    lng: cities[1]['long']
+                                  }
+                                ]
+    var flightPath = new google.maps.Polyline({
+    path: flightPlanCoordinates,
+    geodesic: true,
+    strokeColor: '#FF0000',
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+  });
+
+  flightPath.setMap(map);
+
   };
 
 
