@@ -48,10 +48,8 @@
     newLocation.save(function(err) {
     if (err) throw err;
       console.log('Location created!');
-      // res.json(location);
     });
   })
-
 
   server.listen(3000, function(){
     console.log("Server listening on port 3000");

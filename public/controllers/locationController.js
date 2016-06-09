@@ -1,8 +1,6 @@
 roadtripApp.controller('LocationController', ['$http', function($http){
   var self = this;
 
-  self.working ="hello"
-
   self.sendToDB = function(locationInfo){
       _postToDB(locationInfo);
   }

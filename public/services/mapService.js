@@ -1,19 +1,24 @@
-roadtripApp.service('MapService', ['$http', function($http){
+roadtripApp.service('MapService', ['$http', '$q', function($http, $q){
 
   var self = this;
 
+  self.cities = [];
+
   self.maps = function() {
-    getLocations();
+    var citiesRequest = getLocations();
+    $q.all([citiesRequest]).then(_generateMap);
   };
 
   function getLocations() {
     return $http.get('/locations')
-      .then(_generateMap)
+      .then(function(locations){
+        self.cities = locations.data;
+      })
   };
 
-  var _generateMap = function(locations){
+  var _generateMap = function(){
 
-    var cities = locations.data;
+    var cities = self.cities;
 
     var mapOptions = {
       zoom: 3,
