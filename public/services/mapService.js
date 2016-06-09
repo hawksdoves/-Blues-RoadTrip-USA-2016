@@ -1,28 +1,24 @@
 roadtripApp.service('MapService', ['$http', function($http){
 
-    var self = this;
+  var self = this;
 
-    self.maps = function() {
+  self.maps = function() {
+    getLocations();
+  };
 
-      var cities = [
-                    {
-                        city : 'London',
-                        desc : 'Take off on June 8th!',
-                        lat : 51.5074,
-                        long : 0.1278
-                    },
-                    {
-                        city : 'NYC',
-                        desc : '...?!?',
-                        lat : 40.7128,
-                        long : -74.0059
-                    }
-                ];
+  function getLocations() {
+    return $http.get('/locations')
+      .then(_generateMap)
+  };
 
-      var mapOptions = {
-        zoom: 3,
-        center: new google.maps.LatLng(45,-37),
-        mapTypeId: google.maps.MapTypeId.TERRAIN
+  var _generateMap = function(locations){
+
+    var cities = locations.data;
+
+    var mapOptions = {
+      zoom: 3,
+      center: new google.maps.LatLng(45,-37),
+      mapTypeId: google.maps.MapTypeId.TERRAIN
     }
 
     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
@@ -33,19 +29,20 @@ roadtripApp.service('MapService', ['$http', function($http){
 
     var createMarker = function (info){
 
-        var marker = new google.maps.Marker({
-            map: map,
-            position: new google.maps.LatLng(info.lat, info.long),
-            title: info.city
-        });
-        marker.content = '<div class="infoWindowContent">' + info.desc + '</div>';
+      var marker = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(info.lat, info.lng),
+          title: info.city
+      });
 
-        google.maps.event.addListener(marker, 'click', function(){
-            infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
-            infoWindow.open(map, marker);
-        });
+      marker.content = '<div class="infoWindowContent">' + info.desc + '</div>';
 
-        markers.push(marker);
+      google.maps.event.addListener(marker, 'click', function(){
+          infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+          infoWindow.open(map, marker);
+      });
+
+      markers.push(marker);
 
     }
 
@@ -55,25 +52,22 @@ roadtripApp.service('MapService', ['$http', function($http){
 
     var flightPlanCoordinates = [
                                   { lat: cities[0]['lat'],
-                                    lng: cities[0]['long']
+                                    lng: cities[0]['lng']
                                   },
                                   { lat: cities[1]['lat'],
-                                    lng: cities[1]['long']
+                                    lng: cities[1]['lng']
                                   }
                                 ]
     var flightPath = new google.maps.Polyline({
-    path: flightPlanCoordinates,
-    geodesic: true,
-    strokeColor: '#FF0000',
-    strokeOpacity: 1.0,
-    strokeWeight: 2
-  });
+      path: flightPlanCoordinates,
+      geodesic: true,
+      strokeColor: '#FF0000',
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+    });
 
-  flightPath.setMap(map);
+    flightPath.setMap(map);
 
   };
-
-
-
 
 }]);

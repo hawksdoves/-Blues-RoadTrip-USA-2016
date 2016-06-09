@@ -1,11 +1,9 @@
-
-  var models = require('./server/models/index');
   var express  = require('express');
   var app = express();
   var path = require('path');
   var bodyParser = require('body-parser');
   var server = require('http').createServer(app);
-
+  var Location = require("./models/location");
 
 
   app.use(express.static(__dirname + '/public'));
@@ -21,6 +19,13 @@
     res.sendFile(path.join(__dirname, 'public', 'roadtrip.html'));
   });
 
+  app.get('/locations', function(req, res){
+    Location.find({}, function(err, locations){
+      res.send(locations);
+      console.log(locations);
+    });
+  });
+
   app.get('/current-location', function(req, res){
     res.sendFile(path.join(__dirname, 'public', 'currentLocation.html'));
   });
@@ -32,16 +37,18 @@
   app.post('/location', function(req, res){
     console.log(req.body);
 
-    models.Location.create({
+    var newLocation = Location({
       city: req.body.city,
       desc: req.body.desc,
       lat: req.body.lat,
-      long: req.body.long,
-      startDate: req.body.startDate,
-      endDate: req.body.endDate
-    }).then(function(location) {
-      console.log(location)
-      res.json(location);
+      lng: req.body.long,
+      arrival: new Date(req.body.startDate),
+    })
+
+    newLocation.save(function(err) {
+    if (err) throw err;
+      console.log('Location created!');
+      // res.json(location);
     });
   })
 
