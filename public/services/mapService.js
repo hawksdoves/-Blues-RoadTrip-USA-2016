@@ -4,9 +4,11 @@ roadtripApp.service('MapService', ['$http', '$q', function($http, $q){
 
   self.cities = [];
 
-  self.maps = function() {
+  self.maps = function(callbackFunction) {
     var citiesRequest = getLocations();
-    $q.all([citiesRequest]).then(_generateMap);
+    $q.all([citiesRequest]).then(function(){
+      callbackFunction();
+    });
   };
 
   function getLocations() {
@@ -16,7 +18,7 @@ roadtripApp.service('MapService', ['$http', '$q', function($http, $q){
       })
   };
 
-  var _generateMap = function(){
+  self.generateMap = function(){
 
     var cities = self.cities;
 
