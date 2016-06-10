@@ -9,11 +9,12 @@
   <!-- Scripts -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxY7pHJ_biZy5AQY9JxLQ3xvA_n6hnSqk"></script>
-    <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript" src="services/mapService.js"></script>
-    <script type="text/javascript" src="controllers/roadtripController.js"></script>
-  <!-- Stylesheets -->
-  <link rel="stylesheet" type='text/css' href="stylesheet/main.css">
+    <script type="text/javascript" src="/app.js"></script>
+    <script type="text/javascript" src="/services/mapService.js"></script>
+    <script type="text/javascript" src="/controllers/roadtripController.js"></script>
+
+  <!-- Stylesheets-->
+  <link rel="stylesheet" type='text/css' href="/stylesheet/main.css">
 </head>
 <body ng-controller="RoadTripController as ctrl">
   <ul id="toolbar">
@@ -29,8 +30,10 @@
         </div>
       </div>
   </ul>
+
   <div>
-    <h1>My Journey So Far</h1>
+    <h1>New York City, NY</h1>
+    <h1> {{ ctrl.currentCity().city }} </h1>
     <div id="map" style="width:500px;height:380px;"></div>
 </div>
 </body>

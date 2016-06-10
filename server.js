@@ -5,13 +5,13 @@
   var server = require('http').createServer(app);
   var Location = require("./models/location");
 
-
   app.use(express.static(__dirname + '/public'));
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
 
 
   app.get('/', function(req, res) {
+    console.log(req.body);
     res.sendFile('../public/index.html');
   });
 
@@ -19,10 +19,18 @@
     res.sendFile(path.join(__dirname, 'public', 'roadtrip.html'));
   });
 
+  app.get('/roadtrip/location/:_id', function(req, res, next){
+    res.sendFile(path.join(__dirname, 'public', 'location/index.html'));
+  });
+
+  app.post('roadtrip/location', function(req, res){
+    req.body
+    res.redirect('/');
+  });
+
   app.get('/locations', function(req, res){
     Location.find({}, function(err, locations){
       res.send(locations);
-      console.log(locations);
     });
   });
 
@@ -30,12 +38,11 @@
     res.sendFile(path.join(__dirname, 'public', 'currentLocation.html'));
   });
 
-  app.get('/location', function(req, res){
-    res.sendFile(path.join(__dirname, 'public', 'location.html'));
+  app.get('/new-location', function(req, res){
+    res.sendFile(path.join(__dirname, 'public', 'location/new.html'));
   });
 
   app.post('/location', function(req, res){
-    console.log(req.body);
 
     var newLocation = Location({
       city: req.body.city,

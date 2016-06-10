@@ -16,15 +16,22 @@
   <!-- Stylesheets-->
   <link rel="stylesheet" type='text/css' href="stylesheet/main.css">
 </head>
-<body>
+<body ng-controller="RoadTripController as ctrl">
+  <ul id="toolbar">
 
-    <ul id="toolbar">
       <li><a href="/">Home</a></li>
       <li><a href="/current-location">Current Location</a></li>
-      <li><a href="/roadtrip">Journey so Far</a></li>
-    </ul>
+      <div class="dropdown">
+        <li class="dropbtn"><a href="/roadtrip">Journey so Far</a></li>
+        <div class="dropdown-content">
+           <div ng-repeat="loca in ctrl.allCities()">
+             <a href="/roadtrip/location/{{loca._id}}"> {{ loca.city }}</a>
+          </div>
+        </div>
+      </div>
+  </ul>
 
-  <div ng-controller="RoadTripController as ctrl">
+  <div>
     <h1>New York City, NY</h1>
     <h1> {{ ctrl.currentCity().city }} </h1>
     <div id="map" style="width:500px;height:380px;"></div>

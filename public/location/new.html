@@ -10,6 +10,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="controllers/locationController.js"></script>
+    <script type="text/javascript" src="services/locationService.js"></script>
 
   <!-- Stylesheets-->
   <link rel="stylesheet" type='text/css' href="stylesheet/main.css">
@@ -17,7 +18,7 @@
 <body>
 
   <div ng-controller="LocationController as ctrl">
-    <h1>{{ctrl.working}}</h1>
+
   <form name="locationForm" ng-submit="ctrl.sendToDB(location)">
     <input type="text" placeholder="city" ng-model='location.city'>
     <input type="text" placeholder="desc" ng-model='location.desc'>

@@ -4,6 +4,10 @@ roadtripApp.controller('RoadTripController', ['MapService', function(MapService)
 
   MapService.maps(MapService.generateMap);
 
+  self.allCities = function(){
+    console.log(MapService.cities);
+    return MapService.cities;
+  }
   self.currentCity = function(){
     return MapService.cities.filter(mostRecentCity)[0];
   }
