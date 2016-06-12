@@ -7,7 +7,7 @@ roadtripApp.service('LocationService', ['$http', '$q', function($http, $q){
     console.log(locationInfo.startDate);
       var req = {
         method: 'POST',
-        url: '/location',
+        url: '/locations',
         headers: { 'Content-Type': 'application/json' },
         data: JSON.stringify({  email: locationInfo.email,
                                 city: locationInfo.city,

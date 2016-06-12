@@ -21,18 +21,13 @@
 
   app.get('/roadtrip/location/:_id', function(req, res, next){
     res.sendFile(path.join(__dirname, 'public', 'location/index.html'));
+    //return res.render('public/location/index', { id: req.params._id });
   });
 
-  app.post('roadtrip/location', function(req, res){
-    req.body
-    res.redirect('/');
-  });
-
-  app.get('/locations', function(req, res){
-    Location.find({}, function(err, locations){
-      res.send(locations);
-    });
-  });
+  // app.post('roadtrip/location/:_id', function(req, res){
+  //   req.body
+  //   res.redirect('/roadtrip/location/575af987c66f0a4e1bf9b11a');
+  // });
 
   app.get('/current-location', function(req, res){
     res.sendFile(path.join(__dirname, 'public', 'currentLocation.html'));
@@ -42,7 +37,13 @@
     res.sendFile(path.join(__dirname, 'public', 'location/new.html'));
   });
 
-  app.post('/location', function(req, res){
+  app.get('/locations', function(req, res){
+    Location.find({}, function(err, locations){
+      res.send(locations);
+    });
+  });
+
+  app.post('/locations', function(req, res){
 
     var newLocation = Location({
       city: req.body.city,
