@@ -21,4 +21,6 @@ var roadtripApp = angular.module('roadtripApp', ['ngRoute'])
         params: ':_id'
   })
 
+  $locationProvider.html5Mode(true);
+
 }]);

@@ -13,6 +13,8 @@ roadtripApp.controller('RoadTripController', ['MapService', '$routeParams', '$lo
 
   self.cityId = $routeParams.params;
 
+  console.log('$location: ', $location);
+  console.log('$location.path(): ', $location.path());
   console.log($routeParams);
   console.log($location.search()._id);
 
@@ -32,7 +34,7 @@ roadtripApp.controller('RoadTripController', ['MapService', '$routeParams', '$lo
   //     headers: { 'Content-Type': 'application/json' },
   //     data: JSON.stringify({  id: cityID })
   //   };
-  // 
+  //
   //   $http(req);
   // }
 
