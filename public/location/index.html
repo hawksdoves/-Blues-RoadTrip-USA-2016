@@ -34,10 +34,9 @@
   </ul>
 
   <div>
-    <h1>New York City, NY</h1>
-    <h1> {{ ctrl.cityID }} </h1>
-  <h2>  {{ctrl.currentCity()}}</h2>
-
+    <h1>  {{ctrl.viewCity().city}} </h1>
+    <h3> {{ctrl.viewCity().desc}} </h3>
+    <h1>  {{ctrl.viewCity()}} </h1>
     <div id="map" style="width:500px;height:380px;"></div>
 </div>
 </body>

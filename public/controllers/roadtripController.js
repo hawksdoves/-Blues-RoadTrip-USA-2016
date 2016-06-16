@@ -11,12 +11,13 @@ roadtripApp.controller('RoadTripController', ['MapService', '$routeParams', '$lo
     return MapService.cities.filter(mostRecentCity)[0];
   }
 
-  self.cityId = $routeParams.params;
+  self.viewCity = function(){
+    return MapService.cities.filter(workPlease)[0];
+  }
 
   console.log('$location: ', $location);
   console.log('$location.path(): ', $location.path());
-  console.log($routeParams);
-  console.log($location.search()._id);
+  console.log('$location.path(): ', $location.path().split("/").pop());
 
   function mostRecentCity(city){
     var recentArrivalDate = MapService.cities.map(arrayOfArrivalDates).sort()[0];
@@ -27,18 +28,9 @@ roadtripApp.controller('RoadTripController', ['MapService', '$routeParams', '$lo
     return city.arrival
   }
 
-  // self.goTo = function(cityID){
-  //   var req = {
-  //     method: 'GET',
-  //     url: '/roadtrip/location/'+cityID,
-  //     headers: { 'Content-Type': 'application/json' },
-  //     data: JSON.stringify({  id: cityID })
-  //   };
-  //
-  //   $http(req);
-  // }
 
-
-
+  function workPlease(city){
+    return city._id == $location.path().split("/").pop();
+  }
 
 }])
