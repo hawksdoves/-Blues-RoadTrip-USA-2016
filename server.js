@@ -4,6 +4,7 @@
   var bodyParser = require('body-parser');
   var server = require('http').createServer(app);
   var Location = require("./models/location");
+  var Location = require("./models/activity");
 
   app.use(express.static(__dirname + '/public'));
   app.use(bodyParser.json());
