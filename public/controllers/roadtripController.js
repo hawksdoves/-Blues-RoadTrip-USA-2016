@@ -6,7 +6,7 @@ roadtripApp.controller('RoadTripController', ['MapService', '$routeParams', '$lo
   $q.all([citiesRequest]).then(function(){
     MapService.generateMap(MapService.cities);
   });
-  
+
   self.allCities = function(){
     return MapService.cities;
   }
@@ -14,21 +14,17 @@ roadtripApp.controller('RoadTripController', ['MapService', '$routeParams', '$lo
     return MapService.cities.filter(mostRecentCity)[0];
   }
 
-
-
-  console.log('$location: ', $location);
-  console.log('$location.path(): ', $location.path());
-  console.log('$location.path(): ', $location.path().split("/").pop());
+  // console.log('$location: ', $location);
+  // console.log('$location.path(): ', $location.path());
+  // console.log('$location.path(): ', $location.path().split("/").pop());
 
   function mostRecentCity(city){
-    var recentArrivalDate = MapService.cities.map(arrayOfArrivalDates).sort()[0];
+    var recentArrivalDate = MapService.cities.map(arrayOfArrivalDates).sort().pop();
     return city.arrival == recentArrivalDate;
   };
 
   function arrayOfArrivalDates(city){
     return city.arrival
   }
-
-
 
 }])

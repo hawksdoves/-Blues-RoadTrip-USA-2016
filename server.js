@@ -11,7 +11,6 @@
 
 
   app.get('/', function(req, res) {
-    console.log(req.body);
     res.sendFile('../public/index.html');
   });
 
@@ -21,16 +20,6 @@
 
   app.get('/roadtrip/location/:_id', function(req, res, next){
     res.sendFile(path.join(__dirname, 'public', 'location/index.html'));
-    //return res.render('public/location/index', { id: req.params._id });
-  });
-
-  // app.post('roadtrip/location/:_id', function(req, res){
-  //   req.body
-  //   res.redirect('/roadtrip/location/575af987c66f0a4e1bf9b11a');
-  // });
-
-  app.get('/current-location', function(req, res){
-    res.sendFile(path.join(__dirname, 'public', 'currentLocation.html'));
   });
 
   app.get('/new-location', function(req, res){
@@ -51,6 +40,7 @@
       lat: req.body.lat,
       lng: req.body.long,
       arrival: new Date(req.body.startDate),
+      departed: new Date(req.body.finishDate)
     })
 
     newLocation.save(function(err) {

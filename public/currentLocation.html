@@ -13,30 +13,32 @@
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="services/mapService.js"></script>
     <script type="text/javascript" src="controllers/roadtripController.js"></script>
-
+    <script type="text/javascript" src="controllers/locationController.js"></script>
   <!-- Stylesheets-->
   <link rel="stylesheet" type='text/css' href="stylesheet/main.css">
   <base href="/">
 </head>
-<body ng-controller="RoadTripController as ctrl">
-  <ul id="toolbar">
+<body>
+  <div ng-controller="RoadTripController as ctrl">
+    <ul id="toolbar">
 
-      <li><a href="/">Home</a></li>
-      <li><a href="/current-location">Current Location</a></li>
-      <div class="dropdown">
-        <li class="dropbtn"><a href="/roadtrip">Journey so Far</a></li>
-        <div class="dropdown-content">
-           <div ng-repeat="loca in ctrl.allCities()">
-             <a href="/roadtrip/location/{{loca._id}}"> {{ loca.city }}</a>
+        <li><a href="/">Home</a></li>
+        <li><a href="/current-location">Current Location</a></li>
+        <div class="dropdown">
+          <li class="dropbtn"><a href="/roadtrip">Journey so Far</a></li>
+          <div class="dropdown-content">
+             <div ng-repeat="loca in ctrl.allCities()">
+               <a href="/roadtrip/location/{{loca._id}}"> {{ loca.city }}</a>
+            </div>
           </div>
         </div>
-      </div>
-  </ul>
+    </ul>
 
-  <div>
-    <h1>New York City, NY</h1>
     <h1> {{ ctrl.currentCity().city }} </h1>
+    <h3> {{ctrl.currentCity().desc}} </h3>
+  </div>
+  <div LocationController as ctrl>
     <div id="map" style="width:500px;height:380px;"></div>
-</div>
+  </div>
 </body>
 </html>
