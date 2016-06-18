@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html ng-app="roadtripApp">
 
-<head>
-  <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-  <title>USA Road Trip Summer 2016</title>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxY7pHJ_biZy5AQY9JxLQ3xvA_n6hnSqk"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
-  <script type="text/javascript" src="/app.js"></script>
-  <script type="text/javascript" src="/services/mapService.js"></script>
-  <script type="text/javascript" src="/controllers/roadtripController.js"></script>
+    <title>USA Road Trip Summer 2016</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxY7pHJ_biZy5AQY9JxLQ3xvA_n6hnSqk"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+    <script type="text/javascript" src="/app.js"></script>
+    <script type="text/javascript" src="/services/mapService.js"></script>
+    <script type="text/javascript" src="/controllers/roadtripController.js"></script>
 
-<!-- Stylesheets-->
-<link rel="stylesheet" type='text/css' href="/stylesheet/main.css">
-<base href="/">
-</head>
-<body ng-controller="RoadTripController as ctrl">
-<ul id="toolbar">
+  <!-- Stylesheets-->
+  <link rel="stylesheet" type='text/css' href="/stylesheet/main.css">
+  <base href="/">
+  </head>
+  <body ng-controller="RoadTripController as ctrl">
+  <ul id="toolbar">
 
-    <li><a href="/">Home</a></li>
-    <li><a href="/current-location">Current Location</a></li>
-    <div class="dropdown">
-      <li class="dropbtn"><a href="/roadtrip">Journey so Far</a></li>
-      <div class="dropdown-content">
-         <div ng-repeat="loca in ctrl.allCities()">
-           <a href="/roadtrip/location/{{loca._id}}"> {{ loca.city }}</a>
+      <li><a href="/">Home</a></li>
+      <li><a href="/current-location">Current Location</a></li>
+      <div class="dropdown">
+        <li class="dropbtn"><a href="/roadtrip">Journey so Far</a></li>
+        <div class="dropdown-content">
+           <div ng-repeat="loca in ctrl.allCities()">
+             <a href="/roadtrip/location/{{loca._id}}"> {{ loca.city }}</a>
+          </div>
         </div>
       </div>
-    </div>
-</ul>
+  </ul>
+  <h1>My USA Road Trip</h1>
 
-  <ng-view></ng-view>
-</body>
+  <p>Since 2009, I have dreamt about going on a blues trail, from New Orleans to Chicago.
+  <br>My inspiration: Johnny Lee Hooker, B.B.King and Robert Johnson (to name a few artists, plus genres).
+  <br>I have made no fixed plans, route or driving licence for this road trip, just a general idea of heading North, along the Mississppi, so will update as and when I stumble across my next adventure (or blues bar).
+  </p>
+   <h5>Wish me luck!</h5>
+   <iframe width="420" height="315" src="https://www.youtube.com/embed/7P2eIAGSsUw" frameborder="0" allowfullscreen></iframe>
+   <ng-view></ng-view>
+  </body>
 </html>

@@ -12,14 +12,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
     <script type="text/javascript" src="/app.js"></script>
     <script type="text/javascript" src="/services/mapService.js"></script>
-    <script type="text/javascript" src="/controllers/roadtripController.js"></script>
+    <script type="text/javascript" src="/services/locationService.js"></script>
+    <script type="text/javascript" src="/controllers/locationController.js"></script>
+    <script type="text/javascript" src="/controllers/RoadTripController.js"></script>
 
   <!-- Stylesheets-->
   <link rel="stylesheet" type='text/css' href="/stylesheet/main.css">
   <base href="/">
 </head>
-<body ng-controller="RoadTripController as ctrl">
-  <ul id="toolbar">
+<body >
+  <div ng-controller="RoadTripController as ctrl">
+  <ul id="toolbar" >
 
       <li><a href="/">Home</a></li>
       <li><a href="/current-location">Current Location</a></li>
@@ -32,8 +35,8 @@
         </div>
       </div>
   </ul>
-
-  <div>
+</div>
+  <div ng-controller="LocationController as ctrl">
     <h1>  {{ctrl.viewCity().city}} </h1>
     <h3> {{ctrl.viewCity().desc}} </h3>
     <h1>  {{ctrl.viewCity()}} </h1>

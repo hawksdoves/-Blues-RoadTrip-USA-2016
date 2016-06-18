@@ -4,27 +4,52 @@ roadtripApp.service('MapService', ['$http', '$q', function($http, $q){
 
   self.cities = [];
 
-  self.maps = function(callbackFunction) {
+  self.maps = function(cities) {
     var citiesRequest = getLocations();
     $q.all([citiesRequest]).then(function(){
       callbackFunction();
     });
   };
 
-  function getLocations() {
+  self.aCityMap = function(city){
+
+  };
+
+  self.getLocations = function() {
     return $http.get('/locations')
       .then(function(locations){
         self.cities = locations.data;
       })
   };
 
-  self.generateMap = function(){
+  self.generateMap = function(locations){
 
-    var cities = self.cities;
+    var cities = locations;
+
+    var numOfLocations = locations.length;
+
+    var centerLat = locations.reduce(function(prevVal, elem) {
+      return prevVal + elem.lat;
+    }, 0);
+
+    var centerLong = locations.reduce(function(prevVal, elem) {
+      return prevVal + elem.lng;
+    }, 0);
+
+    var zoomAmount = (numOfLocations===1) ? 11 : 3;
+    console.log(locations);
+    
+    function zoomAmount(numOfLocations){
+      if(numOfLocations===1){
+        return 11
+      }else{
+        return 3
+      }
+    }
 
     var mapOptions = {
-      zoom: 3,
-      center: new google.maps.LatLng(45,-37),
+      zoom: zoomAmount,
+      center: new google.maps.LatLng(centerLat/numOfLocations,centerLong/numOfLocations),
       mapTypeId: google.maps.MapTypeId.TERRAIN
     }
 
@@ -57,14 +82,14 @@ roadtripApp.service('MapService', ['$http', '$q', function($http, $q){
         createMarker(cities[i]);
     }
 
-    var flightPlanCoordinates = [
-                                  { lat: cities[0]['lat'],
-                                    lng: cities[0]['lng']
-                                  },
-                                  { lat: cities[1]['lat'],
-                                    lng: cities[1]['lng']
-                                  }
-                                ]
+    function latLong(city) {
+      return { lat: city['lat'],
+               lng: city['lng']
+             }
+    }
+
+    var flightPlanCoordinates = locations.map(latLong);
+
     var flightPath = new google.maps.Polyline({
       path: flightPlanCoordinates,
       geodesic: true,
