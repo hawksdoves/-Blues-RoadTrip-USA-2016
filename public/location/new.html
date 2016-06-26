@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html ng-app="roadtripApp">
 
-<head>
-  <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-  <title>USA Road Trip Summer 2016</title>
+    <title>USA Road Trip Summer 2016</title>
 
-  <!-- Scripts -->
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxY7pHJ_biZy5AQY9JxLQ3xvA_n6hnSqk"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
-  <script type="text/javascript" src="/app.js"></script>
-  <script type="text/javascript" src="/services/mapService.js"></script>
-  <script type="text/javascript" src="/services/locationService.js"></script>
-  <script type="text/javascript" src="/controllers/locationController.js"></script>
-  <script type="text/javascript" src="/controllers/RoadTripController.js"></script>
+    <!-- Scripts -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxY7pHJ_biZy5AQY9JxLQ3xvA_n6hnSqk"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+    <script type="text/javascript" src="/app.js"></script>
+    <script type="text/javascript" src="/services/mapService.js"></script>
+    <script type="text/javascript" src="/services/locationService.js"></script>
+    <script type="text/javascript" src="/controllers/locationController.js"></script>
+    <script type="text/javascript" src="/controllers/RoadTripController.js"></script>
 
-<!-- Stylesheets-->
-<link rel="stylesheet" type='text/css' href="/stylesheet/main.css">
-<base href="/">
-</head>
-<body>
+  <!-- Stylesheets-->
+    <link rel="stylesheet" type='text/css' href="/stylesheet/main.css">
+    <base href="/">
+  </head>
+  <body>
 
-  <div ng-controller="LocationController as ctrl">
+    <div ng-controller="LocationController as ctrl">
 
-  <form name="locationForm" ng-submit="ctrl.sendToDB(location)">
-    <input type="text" placeholder="city" ng-model='location.city'>
-    <input type="text" placeholder="desc" ng-model='location.desc'>
-    <input type="text" placeholder="lat" ng-model='location.lat'>
-    <input type="text" placeholder="long" ng-model='location.long'>
-    <input type="text" placeholder="start YYYY-MM-DD" ng-model='location.startDate'>
-    <input type="text" placeholder="finish" ng-model='location.finishDate'>
-    <button>Submit</button>
-  </form>
-</div>
-</body>
+      <form name="locationForm" ng-submit="ctrl.sendToDB(location)">
+        <input type="text" placeholder="city" ng-model='location.city'>
+        <input type="text" placeholder="desc" ng-model='location.desc'>
+        <input type="text" placeholder="lat" ng-model='location.lat'>
+        <input type="text" placeholder="long" ng-model='location.long'>
+        <input type="text" placeholder="start YYYY-MM-DD" ng-model='location.startDate'>
+        <input type="text" placeholder="finish" ng-model='location.finishDate'>
+        <button>Submit</button>
+      </form>
+    </div>
+  </body>
 </html>

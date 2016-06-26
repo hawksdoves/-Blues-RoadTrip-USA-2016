@@ -3,14 +3,11 @@ roadtripApp.service('LocationService', ['$http', '$q', function($http, $q){
   var self = this;
 
   self.postToDB = function(locationInfo){
-    console.log(locationInfo.desc);
-    console.log(locationInfo.startDate);
       var req = {
         method: 'POST',
         url: '/locations',
         headers: { 'Content-Type': 'application/json' },
-        data: JSON.stringify({  email: locationInfo.email,
-                                city: locationInfo.city,
+        data: JSON.stringify({  city: locationInfo.city,
                                 desc: locationInfo.desc,
                                 lat: locationInfo.lat,
                                 long: locationInfo.long,

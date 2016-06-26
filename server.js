@@ -4,7 +4,7 @@
   var bodyParser = require('body-parser');
   var server = require('http').createServer(app);
   var Location = require("./models/location");
-  var Location = require("./models/activity");
+  var Activity = require("./models/activity");
 
   app.use(express.static(__dirname + '/public'));
   app.use(bodyParser.json());
@@ -48,6 +48,36 @@
     if (err) throw err;
       console.log('Location created!');
     });
+  })
+
+  app.get('/new-activity', function(req, res){
+    res.sendFile(path.join(__dirname, 'public', 'newActivity.html'));
+  });
+
+  // app.get('/activity', function(req, res){
+  //   Activity.find({}, function(err, locations){
+  //     res.send(locations);
+  //   });
+  // });
+
+  app.post('/activity', function(req, res){
+
+    Location.find({ "city" : req.body.city }, function(err, location){
+
+      var newActivity = Activity({
+        name: req.body.name,
+        desc: req.body.desc,
+        url: req.body.url,
+        location: location[0]._id
+      })
+
+      newActivity.save(function(err) {
+        if (err) throw err;
+        console.log('Activity created!');
+      });
+
+    })
+
   })
 
   server.listen(3000, function(){
