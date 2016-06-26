@@ -1,13 +1,16 @@
-roadtripApp.controller('LocationController', ['LocationService', '$http', 'MapService', '$routeParams', '$location', '$q', function(LocationService, $http, MapService, $routeParams, $location, $q){
+roadtripApp.controller('LocationController', ['LocationService', 'ActivityService', '$http', 'MapService', '$routeParams', '$location', '$q', function(LocationService, ActivityService, $http, MapService, $routeParams, $location, $q){
   var self = this;
 
   self.sendToDB = function(locationInfo){
       LocationService.postToDB(locationInfo);
   }
 
+
+
   var citiesRequest = MapService.getLocations();
   $q.all([citiesRequest]).then(function(){
     MapService.generateMap(MapService.cities.filter(byId));
+    ActivityService.getActivities(self.viewCity()._id);
   });
 
   self.viewCity = function(){
