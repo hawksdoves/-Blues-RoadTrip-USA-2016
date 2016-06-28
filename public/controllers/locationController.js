@@ -13,6 +13,11 @@ roadtripApp.controller('LocationController', ['LocationService', 'ActivityServic
     ActivityService.getActivities(self.viewCity()._id);
   });
 
+  self.activities = function(){
+    console.log("boo");
+    return ActivityService.activities;
+  }
+
   self.viewCity = function(){
     return MapService.cities.filter(byId)[0];
   }

@@ -54,11 +54,11 @@
     res.sendFile(path.join(__dirname, 'public', 'newActivity.html'));
   });
 
-  app.get('roadtrip/locations/:_id//activity', function(req, res){
-  //   Activity.find({}, function(err, locations){
-  //     res.send(locations);
-  //   });
-    console.log("boo");
+  app.get('/roadtrip/locations/:_id/activity', function(req, res){
+    Activity.find({ "location" : :_id }, function(err, activities){
+      res.send(activities);
+    });
+
   });
 
   app.post('/activity', function(req, res){
