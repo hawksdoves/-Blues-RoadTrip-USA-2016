@@ -4,17 +4,6 @@ roadtripApp.service('MapService', ['$http', '$q', function($http, $q){
 
   self.cities = [];
 
-  self.maps = function(cities) {
-    var citiesRequest = getLocations();
-    $q.all([citiesRequest]).then(function(){
-      callbackFunction();
-    });
-  };
-
-  self.aCityMap = function(city){
-
-  };
-
   self.getLocations = function() {
     return $http.get('/locations')
       .then(function(locations){
@@ -38,7 +27,7 @@ roadtripApp.service('MapService', ['$http', '$q', function($http, $q){
 
     var zoomAmount = (numOfLocations===1) ? 11 : 3;
     console.log(locations);
-    
+
     function zoomAmount(numOfLocations){
       if(numOfLocations===1){
         return 11

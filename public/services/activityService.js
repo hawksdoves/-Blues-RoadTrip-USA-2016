@@ -21,9 +21,8 @@ roadtripApp.service('ActivityService', ['$http', '$q', function($http, $q){
     }
 
     self.getActivities = function(locationId) {
-      return $http.get('roadtrip/locations/'+locationId+'/activity')
+      return $http.get('roadtrip/locations/'+locationId+'/activities')
         .then(function(localActivities){
-          console.log(localActivities);
           self.activities = localActivities.data;
         })
     };

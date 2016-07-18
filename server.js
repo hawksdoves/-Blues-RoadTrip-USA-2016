@@ -16,25 +16,26 @@
   });
 
   app.get('/roadtrip', function(req, res){
-    res.sendFile(path.join(__dirname, 'public', 'roadtrip.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
 
-  app.get('/roadtrip/location/:_id', function(req, res, next){
-    res.sendFile(path.join(__dirname, 'public', 'location/index.html'));
+  app.get('/roadtrip/locations/:_id', function(req, res, next){
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
 
-  app.get('/new-location', function(req, res){
+  app.get('/location/new', function(req, res){
     res.sendFile(path.join(__dirname, 'public', 'location/new.html'));
   });
 
   app.get('/locations', function(req, res){
+    console.log("server side");
     Location.find({}, function(err, locations){
       res.send(locations);
     });
   });
 
   app.post('/locations', function(req, res){
-
+    console.log("work");
     var newLocation = Location({
       city: req.body.city,
       desc: req.body.desc,
@@ -50,12 +51,12 @@
     });
   })
 
-  app.get('/new-activity', function(req, res){
+  app.get('/activity/new', function(req, res){
     res.sendFile(path.join(__dirname, 'public', 'newActivity.html'));
   });
 
-  app.get('/roadtrip/locations/:_id/activity', function(req, res){
-    Activity.find({ "location" : :_id }, function(err, activities){
+  app.get('/roadtrip/locations/:_id/activities', function(req, res){
+    Activity.find({ "location" : req.params._id }, function(err, activities){
       res.send(activities);
     });
 

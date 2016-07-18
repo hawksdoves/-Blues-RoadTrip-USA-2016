@@ -22,7 +22,7 @@ ul {
   margin: 0px
 }
 
-li a {
+a {
   text-decoration: none;
   color: black;
 }
@@ -74,4 +74,10 @@ li a {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
+}
+
+.activity {
+  margin: 10px auto;
+  border: 2px dotted grey;
+  width: 30%;
 }

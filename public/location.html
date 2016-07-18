@@ -1,0 +1,13 @@
+
+<div ng-controller="LocationController as ctrl">
+  <h1>  {{ctrl.viewCity().city}} </h1>
+  <h3> {{ctrl.viewCity().desc}} </h3>
+  <div id="map" style="width:300px;height:180px;">{{ctrl.viewMap()}}</div>
+  <div ng-repeat="act in ctrl.activities()">
+    <section class="activity">
+      <a ng-Show="{{ctrl.hasURL(act)}}" href="{{act.url}}"><h4> {{ act.name }}</h4></a>
+      <h4 ng-Hide="{{ctrl.hasURL(act)}}">{{ act.name }}</h4>
+      <h5> {{ act.desc }} </h5>
+    <section>
+  </div>
+</div>
