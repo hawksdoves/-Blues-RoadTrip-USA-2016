@@ -9,9 +9,9 @@ roadtripApp.controller('LocationController', ['LocationService', 'ActivityServic
     return !!activity.url
   }
 
-  var citiesRequest = MapService.getLocations();
+  var citiesRequest = LocationService.getLocations();
   $q.all([citiesRequest]).then(function(){
-    MapService.generateMap(MapService.cities.filter(byId));
+    MapService.generateMap(LocationService.cities.filter(byId));
     ActivityService.getActivities(self.viewCity()._id);
   });
 

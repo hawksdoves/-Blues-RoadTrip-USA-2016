@@ -2,6 +2,15 @@ roadtripApp.service('LocationService', ['$http', '$q', function($http, $q){
 
   var self = this;
 
+  self.cities = [];
+
+  self.getLocations = function() {
+    return $http.get('/locations')
+      .then(function(locations){
+        self.cities = locations.data;
+      })
+  };
+
   self.postToDB = function(locationInfo){
       var req = {
         method: 'POST',
