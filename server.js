@@ -28,14 +28,12 @@
   });
 
   app.get('/locations', function(req, res){
-    console.log("server side");
     Location.find({}, function(err, locations){
       res.send(locations);
     });
   });
 
   app.post('/locations', function(req, res){
-    console.log("work");
     var newLocation = Location({
       city: req.body.city,
       desc: req.body.desc,

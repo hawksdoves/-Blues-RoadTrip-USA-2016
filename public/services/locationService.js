@@ -3,7 +3,6 @@ roadtripApp.service('LocationService', ['$http', '$q', function($http, $q){
   var self = this;
 
   self.postToDB = function(locationInfo){
-    console.log("work first");
       var req = {
         method: 'POST',
         url: '/locations',

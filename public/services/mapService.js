@@ -26,15 +26,6 @@ roadtripApp.service('MapService', ['$http', '$q', function($http, $q){
     }, 0);
 
     var zoomAmount = (numOfLocations===1) ? 11 : 3;
-    console.log(locations);
-
-    function zoomAmount(numOfLocations){
-      if(numOfLocations===1){
-        return 11
-      }else{
-        return 3
-      }
-    }
 
     var mapOptions = {
       zoom: zoomAmount,

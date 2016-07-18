@@ -4,8 +4,6 @@ roadtripApp.controller('RoadTripController', ['MapService', '$routeParams', '$lo
 
   var citiesRequest = MapService.getLocations();
   $q.all([citiesRequest]).then(function(){
-    console.log("controller");
-    console.log(MapService.cities);
     MapService.generateMap(MapService.cities);
   });
 

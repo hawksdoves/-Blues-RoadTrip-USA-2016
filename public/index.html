@@ -16,12 +16,12 @@
     <script type="text/javascript" src="/controllers/RoadTripController.js"></script>
 
   <!-- Stylesheets-->
-  <link rel="stylesheet" type='text/css' href="/stylesheet/main.css">
-  <base href="/">
+    <link rel="stylesheet" type='text/css' href="/stylesheet/main.css">
+    <base href="/">
   </head>
-  <body ng-controller="RoadTripController as ctrl">
-  <ul id="toolbar">
 
+  <body ng-controller="RoadTripController as ctrl">
+    <ul id="toolbar">
       <li><a href="/">Home</a></li>
       <li><a href="/roadtrip/locations/{{ctrl.currentCity()._id}}">Current Location</a></li>
       <div class="dropdown">
@@ -32,7 +32,8 @@
           </div>
         </div>
       </div>
-  </ul>
+    </ul>
    <ng-view></ng-view>
   </body>
+
 </html>
