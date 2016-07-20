@@ -20,11 +20,27 @@ roadtripApp.controller('LocationController', ['LocationService', 'ActivityServic
   }
 
   self.viewCity = function(){
-    return MapService.cities.filter(byId)[0];
+    return LocationService.cities.filter(byId)[0];
   }
 
   function byId(city){
     return city._id == $location.path().split("/").pop();
+  }
+
+  self.allCities = function(){
+    return LocationService.cities;
+  }
+  self.currentCity = function(){
+    return LocationService.cities.filter(mostRecentCity)[0];
+  }
+
+  function mostRecentCity(city){
+    var recentArrivalDate = LocationService.cities.map(arrayOfArrivalDates).sort().pop();
+    return city.arrival == recentArrivalDate;
+  };
+
+  function arrayOfArrivalDates(city){
+    return city.arrival
   }
 
 }])
