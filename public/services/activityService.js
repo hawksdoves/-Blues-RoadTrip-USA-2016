@@ -21,10 +21,12 @@ roadtripApp.service('ActivityService', ['$http', '$q', function($http, $q){
     }
 
     self.getActivities = function(locationId) {
-      return $http.get('roadtrip/locations/'+locationId+'/activities')
-        .then(function(localActivities){
-          self.activities = localActivities.data;
-        })
+      if (!!locationId) {
+        return $http.get('locations/'+locationId._id+'/activities')
+          .then(function(localActivities){
+            self.activities = localActivities.data;
+          })
+      };
     };
 
 }])

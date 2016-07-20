@@ -13,8 +13,6 @@
     <script type="text/javascript" src="/services/locationService.js"></script>
     <script type="text/javascript" src="/services/activityService.js"></script>
     <script type="text/javascript" src="/controllers/locationController.js"></script>
-    <script type="text/javascript" src="/controllers/RoadTripController.js"></script>
-
   <!-- Stylesheets-->
     <link rel="stylesheet" type='text/css' href="/stylesheet/main.css">
     <base href="/">
@@ -23,12 +21,12 @@
   <body ng-controller="LocationController as ctrl">
     <ul id="toolbar">
       <li><a href="/">Home</a></li>
-      <li><a href="/roadtrip/locations/{{ctrl.currentCity()._id}}">Current Location</a></li>
+      <li><a href="/locations/{{ctrl.currentCity()._id}}">Current Location</a></li>
       <div class="dropdown">
         <li class="dropbtn"><a href="/roadtrip">Journey so Far</a></li>
         <div class="dropdown-content">
            <div ng-repeat="loca in ctrl.allCities()">
-             <a href="/roadtrip/locations/{{loca._id}}"> {{ loca.city }}</a>
+             <a href="/locations/{{loca._id}}"> {{ loca.city }}</a>
           </div>
         </div>
       </div>

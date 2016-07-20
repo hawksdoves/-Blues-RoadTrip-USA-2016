@@ -19,7 +19,7 @@
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
 
-  app.get('/roadtrip/locations/:_id', function(req, res, next){
+  app.get('/locations/:_id', function(req, res, next){
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
 
@@ -53,7 +53,7 @@
     res.sendFile(path.join(__dirname, 'public', 'newActivity.html'));
   });
 
-  app.get('/roadtrip/locations/:_id/activities', function(req, res){
+  app.get('/locations/:_id/activities', function(req, res){
     Activity.find({ "location" : req.params._id }, function(err, activities){
       res.send(activities);
     });

@@ -6,18 +6,18 @@ var roadtripApp = angular.module('roadtripApp', ['ngRoute'])
   .when('/', {
     url: '/',
         templateUrl: 'home.html',
-        controller: 'RoadTripController as ctrl'
+        controller: 'LocationController as ctrl'
   })
 
   .when('/roadtrip', {
     url: '/roadtrip',
         templateUrl: 'roadtrip.html',
-        controller: 'RoadTripController as ctrl'
+        controller: 'LocationController as ctrl'
   })
 
-  .when('/roadtrip/locations/:_id', {
+  .when('/locations/:_id', {
         templateUrl: 'location.html',
-        controller: 'RoadTripController as ctrl',
+        controller: 'LocationController as ctrl',
   })
 
   $locationProvider.html5Mode(true);

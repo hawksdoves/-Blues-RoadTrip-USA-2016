@@ -12,7 +12,7 @@ roadtripApp.controller('LocationController', ['LocationService', 'ActivityServic
   var citiesRequest = LocationService.getLocations();
   $q.all([citiesRequest]).then(function(){
     MapService.generateMap(LocationService.cities.filter(byId));
-    ActivityService.getActivities(self.viewCity()._id);
+    ActivityService.getActivities(self.viewCity());
   });
 
   self.activities = function(){
