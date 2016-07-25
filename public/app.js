@@ -3,22 +3,23 @@ var roadtripApp = angular.module('roadtripApp', ['ngRoute'])
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider
 
-  .when('home', {
-    url: '/home',
+  .when('/', {
+    url: '/',
         templateUrl: 'home.html',
-        controller: 'RoadTripController as ctrl'
+        controller: 'LocationController as ctrl'
   })
 
-  .when('roadtrip', {
+  .when('/roadtrip', {
     url: '/roadtrip',
         templateUrl: 'roadtrip.html',
-        controller: 'RoadTripController as ctrl'
+        controller: 'LocationController as ctrl'
   })
 
-  .when('/roadtrip/location/:_id', {
-        templateUrl: 'location/index.html',
-        controller: 'RoadTripController as ctrl',
-        params: ':_id'
+  .when('/locations/:_id', {
+        templateUrl: 'location.html',
+        controller: 'LocationController as ctrl',
   })
+
+  $locationProvider.html5Mode(true);
 
 }]);
